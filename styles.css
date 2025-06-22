@@ -1,0 +1,240 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Model box yang lebih intuitif */
+}
+
+html, body {
+  height: 100%; /* Full height viewport */
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow: hidden; /* Mencegah scroll */
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  object-fit: cover; /* Memastikan video menutupi area tanpa distorsi */
+  z-index: -1; /* Di belakang konten lain */
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px; /* Spacing internal */
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 764px; /* Lebar maksimum */
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 18px;
+  border-radius: 30px; /* Bentuk pill */
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparan */
+  color: white;
+  backdrop-filter: blur(4px); /* Efek blur modern */
+}
+
+/* ===== MAIN SHORTCUTS ===== */
+.shortcuts {
+  display: flex;
+  flex-wrap: wrap; /* Responsif untuk mobile */
+  justify-content: center;
+  gap: 50px; /* Spacing antar item */
+}
+
+.shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  width: 60px; /* Lebar tetap */
+}
+
+.shortcut-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; /* Lingkaran sempurna */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.shortcut-icon:hover {
+  transform: scale(1.1); /* Efek zoom halus */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); /* Glow effect */
+}
+
+.shortcut span {
+  font-size: 12px;
+  word-break: break-word; /* Mencegah overflow text */
+}
+
+/* ===== CORNER SHORTCUTS (TOP-RIGHT) ===== */
+.corner-shortcut {
+  position: fixed;
+  top: 5px;
+  right: 45px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  z-index: 1000; /* Pastikan selalu di atas */
+}
+
+/* Efek expand-on-hover */
+.top-shortcut {
+  padding: 10px 14px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  width: 40px; /* State awal (hanya icon) */
+}
+
+.top-shortcut .label {
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.top-shortcut:hover {
+  width: 120px; /* Lebar saat hover (tampilkan label) */
+  transform: translateY(-2px); /* Efek mengambang */
+}
+
+.top-shortcut:hover .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.top-shortcut:hover .icon {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.top-shortcut .icon {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ===== VISUAL EFFECTS ===== */
+/* Efek Salju */
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Tidak mengganggu interaksi */
+  z-index: 9999;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 1em;
+  animation: fall linear infinite;
+  user-select: none;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg); /* Animasi jatuh + rotasi */
+  }
+}
+
+/* Efek Kabut */
+.fog-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 150%;
+  background: url('./images/fog.png') repeat-x;
+  background-size: cover;
+  opacity: 1;
+  animation: fogMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 5; /* Di atas background tapi di bawah konten */
+}
+
+.layer-1 {
+  animation-duration: 60s;
+  opacity: 0.75;
+}
+
+.layer-2 {
+  animation-duration: 60s;
+  opacity: 0.70;
+}
+
+@keyframes fogMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%); /* Animasi bergerak horizontal */
+  }
+}
+
+/* ===== SLIDESHOW BUTTONS ===== */
+button#prevBtn, button#nextBtn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none; /* Transparan */
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+button#prevBtn {
+  left: 10px;
+}
+
+button#nextBtn {
+  right: 10px;
+}
+
+/* Efek Hover Button */
+button#prevBtn:hover, button#nextBtn:hover {
+  transform: translateY(-50%) scale(1.3); /* Membesar */
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
+}
+
+/* Efek Klik Button */
+button#prevBtn:active, button#nextBtn:active {
+  transform: translateY(-50%) scale(1.1);
+}
