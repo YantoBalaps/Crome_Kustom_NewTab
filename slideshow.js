@@ -10,7 +10,9 @@ const videos = [
   './video/background1.mp4'
 ];
 
-let currentIndex = 0;
+// Pilih video random setiap kali new tab dibuka
+let currentIndex = Math.floor(Math.random() * videos.length);
+
 const videoElement = document.getElementById('bgVideo');
 
 // Pastikan video siap diputar
@@ -27,7 +29,7 @@ function updateVideo() {
   }, { once: true });
 }
 
-// Navigasi video
+// Navigasi video (pakai tombol ⟨ ⟩)
 document.getElementById('prevBtn').addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + videos.length) % videos.length;
   updateVideo();
@@ -38,5 +40,5 @@ document.getElementById('nextBtn').addEventListener('click', () => {
   updateVideo();
 });
 
-// Inisialisasi
+// Inisialisasi → langsung random
 updateVideo();
