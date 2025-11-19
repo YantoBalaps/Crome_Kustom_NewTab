@@ -9,7 +9,8 @@ const possibleVideos = [
   './videos/background7.mp4',
   './videos/background8.mp4',
   './videos/background9.mp4'
-]
+];
+
 let availableVideos = [];
 let currentIndex = 0;
 const videoElement = document.getElementById('bgVideo');
@@ -94,11 +95,4 @@ document.addEventListener('mousemove', (e) => {
   } else {
     nextBtn.classList.remove('show');
   }
-<<<<<<< HEAD
 });
-=======
-});
-
-// Inisialisasi → langsung random
-updateVideo();
->>>>>>> 2314b67a51cbffe9a2de0100ea29f08f313ef4bb
