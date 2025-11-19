@@ -3,5 +3,9 @@
 3. Klik Load unpacked, pilih folder ekstensi kamu (CromeLiveWall)
 
 ubah background
-ganti ini dengan bg video kamu (masukin kedalam folder)
-<source src="background3.mp4" type="video/mp4">
+ganti nama video mu dengan nama ini (masukin kedalam folder video)
+Background1.mp4
+...
+...
+...
+mentok sampe Background9 doang, mau lebih banyak? tambahin sendiri noh di code slideshow.js
