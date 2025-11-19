@@ -9,7 +9,7 @@ const possibleVideos = [
   './videos/background7.mp4',
   './videos/background8.mp4',
   './videos/background9.mp4'
-
+]
 let availableVideos = [];
 let currentIndex = 0;
 const videoElement = document.getElementById('bgVideo');
