@@ -1,5 +1,6 @@
 const videos = [
-  './video/background1.mp4'
+  './video/background1.mp4',
+  './video/background2.mp4'
 ];
 
 // Pilih video random setiap kali new tab dibuka
