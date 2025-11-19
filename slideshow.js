@@ -1,14 +1,14 @@
 // Daftar video yang MUNGKIN ada
 const possibleVideos = [
-  './videos/background1.mp4',
-  './videos/background2.mp4', 
-  './videos/background3.mp4',
-  './videos/background4.mp4',
-  './videos/background5.mp4',
-  './videos/background6.mp4',
-  './videos/background7.mp4',
-  './videos/background8.mp4',
-  './videos/background9.mp4'
+  './video/background1.mp4',
+  './video/background2.mp4', 
+  './video/background3.mp4',
+  './video/background4.mp4',
+  './video/background5.mp4',
+  './video/background6.mp4',
+  './video/background7.mp4',
+  './video/background8.mp4',
+  './video/background9.mp4'
 ];
 
 let availableVideos = [];
