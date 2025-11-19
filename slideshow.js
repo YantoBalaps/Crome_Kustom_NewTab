@@ -15,7 +15,7 @@ let availableVideos = [];
 let currentIndex = 0;
 const videoElement = document.getElementById('bgVideo');
 
-// ⭐ FUNGSI BARU: Cek video mana yang benar-benar ada
+// Cek video mana yang benar-benar ada
 async function checkAvailableVideos() {
   const existingVideos = [];
   
