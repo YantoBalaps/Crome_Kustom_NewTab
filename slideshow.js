@@ -1,13 +1,13 @@
 const videos = [
-  './video/background4.mp4',
-  './video/background3.mp4',
+  './video/background1.mp4',
   './video/background2.mp4',
+  './video/background3.mp4',
+  './video/background4.mp4',
   './video/background5.mp4',
   './video/background6.mp4',
   './video/background7.mp4',
   './video/background8.mp4',
-  './video/background9.mp4',
-  './video/background1.mp4'
+  './video/background9.mp4'
 ];
 
 // Pilih video random setiap kali new tab dibuka
@@ -38,6 +38,27 @@ document.getElementById('prevBtn').addEventListener('click', () => {
 document.getElementById('nextBtn').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % videos.length;
   updateVideo();
+});
+
+// Detect ketika kursor mendekati area tepi layar
+document.addEventListener('mousemove', (e) => {
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const edgeThreshold = 50; // Pixel dari tepi
+  
+  // Cek jika kursor dekat tepi kiri
+  if (e.clientX <= edgeThreshold) {
+    prevBtn.classList.add('show');
+  } else {
+    prevBtn.classList.remove('show');
+  }
+  
+  // Cek jika kursor dekat tepi kanan
+  if (e.clientX >= window.innerWidth - edgeThreshold) {
+    nextBtn.classList.add('show');
+  } else {
+    nextBtn.classList.remove('show');
+  }
 });
 
 // Inisialisasi → langsung random

@@ -3,74 +3,81 @@
 <head>
   <!-- META DATA & TITLE -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Untuk responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My New Tab</title>
-  <link rel="stylesheet" href="styles.css"> <!-- File CSS eksternal -->
+  <link rel="stylesheet" href="styles.css">
   
   <!-- PRELOAD RESOURCES UNTUK PERFORMANCE LEBIH BAIK -->
   <link rel="preload" href="images/fog.png" as="image">
   <link rel="preload" href="styles.css" as="style">
 </head>
 <body>
-  <!-- 
-    VIDEO BACKGROUND 
-    - autoplay: mulai otomatis
-    - muted: wajib untuk autoplay di kebanyakan browser
-    - loop: video akan berulang
-    - playsinline: untuk tampilan mobile yang baik
-  -->
+  <!-- VIDEO BACKGROUND -->
   <video id="bgVideo" autoplay muted loop playsinline poster="./images/fallback.jpg">
-    <source src="./videos/background.mp4" type="video/mp4">
-    Your browser does not support the video tag. <!-- Fallback text -->
+    Your browser does not support the video tag.
   </video>
 
-  <!-- 
-    SLIDESHOW BUTTONS 
-    - aria-label: untuk aksesibilitas
-    - Diposisikan fixed agar selalu terlihat
-  -->
+  <!-- SLIDESHOW BUTTONS -->
   <button id="prevBtn" aria-label="Previous background">⟨</button>
   <button id="nextBtn" aria-label="Next background">⟩</button>
 
   <!-- MAIN CONTENT CONTAINER -->
   <div class="container">
-    <!-- SEARCH BOX -->
+  <!-- SEARCH SECTION -->
+  <div class="search-section">
+    <div class="floating-icon" id="runawayIcon">
+      <img src="./images/search-icon.gif" alt="Search icon" class="search-icon-gif">
+    </div>
+    
     <form class="search-box" action="https://www.google.com/search" method="GET" role="search">
       <input type="text" name="q" placeholder="Search Google or type a URL" autofocus 
              aria-label="Search input" autocomplete="off">
     </form>
+  </div>
 
     <!-- SHORTCUT UTAMA -->
     <div class="shortcuts" role="navigation" aria-label="Quick links">
-      <!-- Setiap shortcut memiliki:
-           - href: link tujuan
-           - img: ikon
-           - span: label text
-      -->
       <a class="shortcut" href="https://www.youtube.com" aria-label="YouTube">
-        <img src="./images/1.png" alt="YouTube icon" class="shortcut-icon">
-        <span>YouTube</span>
+        <div class="shortcut-content">
+          <img src="./images/1.png" alt="YouTube icon" class="shortcut-icon static">
+          <img src="./images/1.gif" alt="YouTube icon" class="shortcut-icon gif">
+          <span>YouTube</span>
+        </div>
       </a>
-      <!-- Shortcut lainnya dengan pola yang sama -->
       <a class="shortcut" href="https://www.pinterest.com" aria-label="Pinterest">
-        <img src="./images/2.png" alt="Pinterest icon" class="shortcut-icon">
-        <span>Pinterest</span>
+        <div class="shortcut-content">
+          <img src="./images/2.png" alt="Pinterest icon" class="shortcut-icon static">
+          <img src="./images/2.gif" alt="Pinterest icon" class="shortcut-icon gif">
+          <span>Pinterest</span>
+        </div>
       </a>
       <a class="shortcut" href="https://drive.google.com" aria-label="Google Drive">
-        <img src="./images/4.png" alt="Drive icon" class="shortcut-icon">
-        <span>Drive</span>
+        <div class="shortcut-content">
+          <img src="./images/4.png" alt="Drive icon" class="shortcut-icon static">
+          <img src="./images/4.gif" alt="Drive icon" class="shortcut-icon gif">
+          <span>Drive</span>
+        </div>
       </a>
       <a class="shortcut" href="https://facebook.com" aria-label="Facebook">
-        <img src="./images/3.png" alt="Facebook icon" class="shortcut-icon">
-        <span>Facebook</span>
+        <div class="shortcut-content">
+          <img src="./images/3.png" alt="Facebook icon" class="shortcut-icon static">
+          <img src="./images/3.gif" alt="Facebook icon" class="shortcut-icon gif">
+          <span>Facebook</span>
+        </div>
       </a>
       <a class="shortcut" href="https://www.weights.com/" aria-label="VoiceAI">
-        <img src="./images/5.png" alt="VoiceAI icon" class="shortcut-icon">
-        <span>VoiceAI</span>
+        <div class="shortcut-content">
+          <img src="./images/5.png" alt="VoiceAI icon" class="shortcut-icon static">
+          <img src="./images/5.gif" alt="VoiceAI icon" class="shortcut-icon gif">
+          <span>VoiceAI</span>
+        </div>
       </a>
-      <a class="shortcut" href="https://otakudesu.best/" aria-label="VoiceAI">
-        <img src="./images/6.png" alt="OtakuDesu icon" class="shortcut-icon">
-        <span>OtakuDesu</span>
+      <a class="shortcut" href="https://kusonime.com/" aria-label="Kusonime">
+        <div class="shortcut-content">
+          <img src="./images/6.png" alt="Kusonime icon" class="shortcut-icon static">
+          <img src="./images/6.gif" alt="Kusonime icon" class="shortcut-icon gif">
+          <span>Kusonime</span>
+        </div>
       </a>
     </div>
 
@@ -104,5 +111,6 @@
   <!-- JAVASCRIPT -->
   <script src="snow.js" defer></script> <!-- Script efek salju (defer untuk load terakhir) -->
   <script src="slideshow.js" defer></script> <!-- Script slideshow background -->
+  <script src="runawayIcon.js" defer></script> <!-- Script icon lari saat didekati -->
 </body>
 </html>

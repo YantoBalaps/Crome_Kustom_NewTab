@@ -2,14 +2,14 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Model box yang lebih intuitif */
+  box-sizing: border-box;
 }
 
 html, body {
-  height: 100%; /* Full height viewport */
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
   color: white;
-  overflow: hidden; /* Mencegah scroll */
+  overflow: hidden;
 }
 
 /* ===== VIDEO BACKGROUND ===== */
@@ -17,10 +17,10 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  object-fit: cover; /* Memastikan video menutupi area tanpa distorsi */
-  z-index: -1; /* Di belakang konten lain */
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
 }
 
 /* ===== MAIN CONTAINER ===== */
@@ -32,62 +32,149 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 20px; /* Spacing internal */
+  padding: 40px 20px;
+}
+
+/* ===== SEARCH SECTION ===== */
+.search-section {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 764px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== FLOATING ICON ===== */
+.floating-icon {
+  margin-bottom: 15px;
+  transform: translateY(-50px);
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 15;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ===== SEARCH BOX ===== */
 .search-box {
-  margin-bottom: 40px;
   width: 100%;
-  max-width: 764px; /* Lebar maksimum */
+  max-width: 764px;
+  transition: transform 0.3s ease;
 }
 
 .search-box input {
   width: 100%;
   padding: 14px 20px;
   font-size: 18px;
-  border-radius: 30px; /* Bentuk pill */
+  border-radius: 30px;
   border: none;
   outline: none;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparan */
+  background-color: rgba(255, 255, 255, 0.2);
   color: white;
-  backdrop-filter: blur(4px); /* Efek blur modern */
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* ===== MAIN SHORTCUTS ===== */
 .shortcuts {
   display: flex;
-  flex-wrap: wrap; /* Responsif untuk mobile */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 50px; /* Spacing antar item */
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .shortcut {
   display: flex;
+  text-decoration: none;
+}
+
+.shortcut-content {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: white;
-  width: 60px; /* Lebar tetap */
+  transition: transform 0.3s ease;
+  padding: 15px;
+  width: 80px;
+  position: relative;
+}
+
+.shortcut:hover .shortcut-content {
+  transform: scale(1.2);
 }
 
 .shortcut-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%; /* Lingkaran sempurna */
+  border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  margin-bottom: 8px;
+  transition: opacity 0.3s ease;
 }
 
-.shortcut-icon:hover {
-  transform: scale(1.1); /* Efek zoom halus */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); /* Glow effect */
+.shortcut:hover .shortcut-icon {
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  filter: brightness(1.2);
+}
+
+/* Default: static visible, gif hidden */
+.shortcut-icon.static {
+  opacity: 1;
+  position: relative;
+}
+.shortcut-icon.gif {
+  opacity: 0;
+  position: absolute;
+  top: 15px;
+}
+
+/* Hover: static hidden, gif visible */
+.shortcut:hover .shortcut-icon.static {
+  opacity: 0;
+}
+.shortcut:hover .shortcut-icon.gif {
+  opacity: 1;
 }
 
 .shortcut span {
   font-size: 12px;
-  word-break: break-word; /* Mencegah overflow text */
+  white-space: nowrap; 
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.shortcut:hover span {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
 }
 
 /* ===== CORNER SHORTCUTS (TOP-RIGHT) ===== */
@@ -98,10 +185,9 @@ html, body {
   display: flex;
   flex-direction: row;
   gap: 5px;
-  z-index: 1000; /* Pastikan selalu di atas */
+  z-index: 1000;
 }
 
-/* Efek expand-on-hover */
 .top-shortcut {
   padding: 10px 14px;
   color: white;
@@ -112,7 +198,7 @@ html, body {
   gap: 5px;
   transition: all 0.2s ease;
   overflow: hidden;
-  width: 40px; /* State awal (hanya icon) */
+  width: 40px;
 }
 
 .top-shortcut .label {
@@ -123,8 +209,8 @@ html, body {
 }
 
 .top-shortcut:hover {
-  width: 120px; /* Lebar saat hover (tampilkan label) */
-  transform: translateY(-2px); /* Efek mengambang */
+  width: 120px;
+  transform: translateY(-2px);
 }
 
 .top-shortcut:hover .label {
@@ -139,6 +225,8 @@ html, body {
 
 .top-shortcut .icon {
   transition: opacity 0.2s ease, transform 0.2s ease;
+  width: 20px;
+  height: 20px;
 }
 
 /* ===== VISUAL EFFECTS ===== */
@@ -149,7 +237,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Tidak mengganggu interaksi */
+  pointer-events: none;
   z-index: 9999;
 }
 
@@ -165,7 +253,7 @@ html, body {
 
 @keyframes fall {
   to {
-    transform: translateY(100vh) rotate(360deg); /* Animasi jatuh + rotasi */
+    transform: translateY(100vh) rotate(360deg);
   }
 }
 
@@ -181,7 +269,7 @@ html, body {
   opacity: 1;
   animation: fogMove 60s linear infinite;
   pointer-events: none;
-  z-index: 5; /* Di atas background tapi di bawah konten */
+  z-index: 5;
 }
 
 .layer-1 {
@@ -199,7 +287,7 @@ html, body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%); /* Animasi bergerak horizontal */
+    transform: translateX(-50%);
   }
 }
 
@@ -209,14 +297,20 @@ button#prevBtn, button#nextBtn {
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
-  background: none; /* Transparan */
+  background: none;
   color: white;
   border: none;
   padding: 1rem;
   cursor: pointer;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0;
   transition: all 0.3s ease;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button#prevBtn {
@@ -227,14 +321,11 @@ button#nextBtn {
   right: 10px;
 }
 
-/* Efek Hover Button */
-button#prevBtn:hover, button#nextBtn:hover {
-  transform: translateY(-50%) scale(1.3); /* Membesar */
-  opacity: 1;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
+button#prevBtn.show, button#nextBtn.show {
+  opacity: 0.7;
 }
 
-/* Efek Klik Button */
-button#prevBtn:active, button#nextBtn:active {
-  transform: translateY(-50%) scale(1.1);
+button#prevBtn:hover, button#nextBtn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.3);
 }
