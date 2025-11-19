@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Daftar video yang MUNGKIN ada
 const possibleVideos = [
   './videos/background1.mp4',
@@ -9,6 +10,11 @@ const possibleVideos = [
   './videos/background7.mp4',
   './videos/background8.mp4',
   './videos/background9.mp4'
+=======
+const videos = [
+  './video/background1.mp4',
+  './video/background2.mp4'
+>>>>>>> 2314b67a51cbffe9a2de0100ea29f08f313ef4bb
 ];
 
 let availableVideos = [];
@@ -95,4 +101,11 @@ document.addEventListener('mousemove', (e) => {
   } else {
     nextBtn.classList.remove('show');
   }
+<<<<<<< HEAD
 });
+=======
+});
+
+// Inisialisasi → langsung random
+updateVideo();
+>>>>>>> 2314b67a51cbffe9a2de0100ea29f08f313ef4bb
